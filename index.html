@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0f19" />
+    <title>DCA Bot Control Panel</title>
+    <script>
+      (function () {
+        try {
+          var raw = localStorage.getItem('front-trade-bot-ui')
+          document.documentElement.classList.add('dark')
+          if (!raw) return
+          var p = JSON.parse(raw)
+          var t = p.state && p.state.theme
+          if (t === 'light') document.documentElement.classList.remove('dark')
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
