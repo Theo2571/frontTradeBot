@@ -6,6 +6,7 @@ import './i18n/config'
 import App from './App'
 import './index.css'
 import { ThemeSync } from '@/components/ThemeSync'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { useUiStore } from '@/store/uiStore'
 
 const queryClient = new QueryClient({
@@ -38,7 +39,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ThemeSync />
-      <App />
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
       <ThemeToaster />
     </QueryClientProvider>
   </React.StrictMode>,
